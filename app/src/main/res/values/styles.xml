@@ -11,7 +11,7 @@
     </style>
 
     <style name="ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/blue</item>
+        <item name="android:background">@color/light_blue</item>
         <item name="titleTextAppearance">@style/Widget.Styled.ActionBar.Title</item>
     </style>
 
@@ -47,7 +47,7 @@
     <style name="SampleApp.DayNight" parent="Theme.MaterialComponents.DayNight">
         <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyle</item>
         <item name="materialDrawerBackground">@color/white</item>
-        <item name="materialDrawerPrimaryIcon">@color/blue</item>
+        <item name="materialDrawerPrimaryIcon">@color/light_blue</item>
         <item name="materialDrawerDividerColor">@color/black</item>
         <item name="materialDrawerSelectedBackgroundColor">@color/black</item>
         <item name="materialDrawerHeaderSelectionText">@color/black</item>
@@ -59,9 +59,9 @@
 
     <style name="RoundedCornerButton" parent="@style/Widget.AppCompat.Button.Colored">
         <item name="android:background">@color/light_blue</item>
-        <item name="color">#0460B4</item>
-        <item name="colorButtonNormal">#1a237e</item>
-        <item name="colorControlHighlight">@color/blue</item>
+        <item name="color">@color/light_blue</item>
+        <item name="colorButtonNormal">@color/dark_main_color</item>
+        <item name="colorControlHighlight">@color/light_blue</item>
         <item name="android:stateListAnimator">@animator/button_animation</item>
     </style>
 

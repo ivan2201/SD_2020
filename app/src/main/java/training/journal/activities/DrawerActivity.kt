@@ -27,6 +27,8 @@ abstract class DrawerActivity : BaseActivity() {
         const val FAVOURITE_ITEM_ID = 3L
         const val SETTINGS_ITEM_ID = 4L
         const val EXIT_ITEM_ID = 5L
+        const val RESULTS_ITEM_ID = 6L
+        const val CALENDAR_ITEM_ID = 7L
     }
 
     private val profile: ProfileDrawerItem = ProfileDrawerItem()
@@ -40,6 +42,12 @@ abstract class DrawerActivity : BaseActivity() {
         slider.apply {
             onDrawerItemClickListener = { _, item, _ ->
                 when (item.identifier) {
+                    CALENDAR_ITEM_ID -> {
+                        router?.showCalendarPage()
+                    }
+                    RESULTS_ITEM_ID -> {
+                        router?.showResultsPage()
+                    }
                     SEARCH_ITEM_ID -> {
                     }
                     BOOKMARKS_ITEM_ID -> {
@@ -73,17 +81,18 @@ abstract class DrawerActivity : BaseActivity() {
     }
 
     private fun setupItems() {
-        val searchItem = PrimaryDrawerItem().apply {
-            name = StringHolder(R.string.drawer_item_search)
-            icon = ImageHolder(R.drawable.ic_search)
-            identifier = SEARCH_ITEM_ID
+
+        val calendarItem = PrimaryDrawerItem().apply {
+            name = StringHolder(R.string.drawer_item_calendar)
+            icon = ImageHolder(R.drawable.ic_item_calendar)
+            identifier = CALENDAR_ITEM_ID
             isSelectable = false
         }
 
-        val bookmarksItem = PrimaryDrawerItem().apply {
-            name = StringHolder(R.string.drawer_item_bookmarks)
-            icon = ImageHolder(R.drawable.ic_bookmarks)
-            identifier = BOOKMARKS_ITEM_ID
+        val resultsItem = PrimaryDrawerItem().apply {
+            name = StringHolder(R.string.drawer_item_results)
+            icon = ImageHolder(R.drawable.ic_results)
+            identifier = RESULTS_ITEM_ID
             isSelectable = false
         }
 
@@ -109,8 +118,8 @@ abstract class DrawerActivity : BaseActivity() {
         }
 
         slider.addItems(
-                searchItem,
-                bookmarksItem,
+                calendarItem,
+                resultsItem,
                 favouritesItem,
                 DividerDrawerItem(),
                 settingsItem,

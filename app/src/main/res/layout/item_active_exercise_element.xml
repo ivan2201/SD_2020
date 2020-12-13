@@ -1,28 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimens_8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/parameter_goal"
-        android:layout_width="wrap_content"
+        android:id="@+id/parameter_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/parameter_goal_dummy"
-        android:textSize="@dimen/text_size_25"
-        app:layout_constraintEnd_toStartOf="@+id/parameter"
+        tools:text="Parameter name"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:textSize="@dimen/text_size_15"
+        app:layout_constraintTop_toTopOf="@id/parameter_value"
+        app:layout_constraintBottom_toBottomOf="@id/parameter_value"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/parameter_value"
+        app:layout_constraintHorizontal_weight="3"
+        />
+
+    <EditText
+        android:id="@+id/parameter_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="@string/_0_00"
+        android:textSize="@dimen/text_size_20"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/parameter_value_result"
+        app:layout_constraintStart_toEndOf="@id/parameter_name"
+        app:layout_constraintEnd_toStartOf="@id/parameter_unit"
+        app:layout_constraintHorizontal_weight="2.5"
+        />
 
     <TextView
-        android:id="@+id/parameter"
-        android:layout_width="wrap_content"
+        android:id="@+id/parameter_unit"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/parameter_text_dummy"
-        android:textSize="@dimen/text_size_25"
+        tools:text="ue"
+        android:textSize="@dimen/text_size_18"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        app:layout_constraintTop_toTopOf="@id/parameter_value"
+        app:layout_constraintBottom_toBottomOf="@id/parameter_value"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/parameter_goal"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        app:layout_constraintStart_toEndOf="@id/parameter_value"
+        app:layout_constraintHorizontal_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/parameter_result_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/result"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:textSize="@dimen/text_size_15"
+        app:layout_constraintTop_toTopOf="@+id/parameter_value_result"
+        app:layout_constraintBottom_toBottomOf="@+id/parameter_value_result"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/parameter_value_result"
+        app:layout_constraintHorizontal_weight="3"
+        />
+
+    <EditText
+        android:id="@+id/parameter_value_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="@string/_0_00"
+        android:textSize="@dimen/text_size_20"
+        app:layout_constraintTop_toBottomOf="@id/parameter_value"
+        app:layout_constraintBottom_toTopOf="@id/parameter_progress"
+        app:layout_constraintStart_toEndOf="@id/parameter_result_text"
+        app:layout_constraintEnd_toStartOf="@id/parameter_unit_result"
+        app:layout_constraintHorizontal_weight="2.5"
+        />
+
+    <TextView
+        android:id="@+id/parameter_unit_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="ue"
+        android:textSize="@dimen/text_size_18"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        app:layout_constraintTop_toTopOf="@+id/parameter_value_result"
+        app:layout_constraintBottom_toBottomOf="@+id/parameter_value_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/parameter_value_result"
+        app:layout_constraintHorizontal_weight="1"
+        />
+
+    <TextView
+        android:id="@+id/parameter_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/parameter_progress"
+        app:layout_constraintTop_toBottomOf="@id/parameter_value_result"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="textEnd"
+        android:layout_marginBottom="@dimen/dimens_16dp"
+        />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

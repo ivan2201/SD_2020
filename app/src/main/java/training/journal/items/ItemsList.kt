@@ -50,4 +50,8 @@ class ItemsList<Item>(var items: MutableList<Item>) {
     fun size(): Int {
         return items.size
     }
+
+    fun contains(item: Item): Boolean {
+        return items.contains(item)
+    }
 }

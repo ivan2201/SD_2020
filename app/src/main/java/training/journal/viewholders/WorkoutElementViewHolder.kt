@@ -15,7 +15,7 @@ class WorkoutElementViewHolder(
     private var description: TextView = itemView.description
 
     override fun bind(item: WorkoutItem) {
-        icon.setImageResource(item.iconId.toInt())
+        icon.setImageResource(item.iconId)
         title.text = item.title
         description.text = item.description
     }

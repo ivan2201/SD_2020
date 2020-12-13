@@ -6,7 +6,6 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class MeasureUnitEntity(
-    @ColumnInfo var name: String,
     @ColumnInfo var acronym: String,
     @ColumnInfo var serverId: Long = -1,
     @PrimaryKey(autoGenerate = true) var id: Long = 0

@@ -11,19 +11,20 @@ import androidx.room.PrimaryKey
             entity = MeasureUnitEntity::class,
             parentColumns = ["id"],
             childColumns = ["measureUnitId"]
-        ),
-        ForeignKey(
-            entity = ParameterTypeEntity::class,
-            parentColumns = ["id"],
-            childColumns = ["parameterTypeId"]
         )
     ]
 )
 data class ParameterEntity(
     @ColumnInfo var name: String,
     @ColumnInfo var measureUnitId: Long,
-    @ColumnInfo var parameterTypeId: Long,
+    @ColumnInfo var resultType: Int = GREATER_BETTER,
     @ColumnInfo var value: Float = 0.0f,
     @ColumnInfo var serverId: Long = -1,
     @PrimaryKey(autoGenerate = true) var id: Long = 0
-)
+) {
+    companion object {
+        const val GREATER_BETTER = 1
+        const val EQUALS_BETTER = 2
+        const val LESS_BETTER = 3
+    }
+}

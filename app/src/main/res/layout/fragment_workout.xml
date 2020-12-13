@@ -23,7 +23,7 @@
         android:gravity="center"
         android:text="@string/choose_time"
         android:textSize="20sp"
-        
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/workout_name"
         app:layout_constraintBottom_toTopOf="@id/day1"
@@ -130,7 +130,7 @@
         android:id="@+id/add_exercise_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/ic_add_circle_black_24dp"
+        android:src="@drawable/ic_add_circle_bright_24dp"
         app:layout_constraintStart_toEndOf="@id/add_exercise_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/add_exercise_text"

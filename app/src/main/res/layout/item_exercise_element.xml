@@ -27,42 +27,54 @@
         android:src="@drawable/ic_delete_black_24dp"
         />
 
+    <TextView
+        android:id="@+id/goal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/value"
+        app:layout_constraintTop_toTopOf="@id/value"
+        app:layout_constraintBottom_toBottomOf="@id/value"
+        android:layout_marginHorizontal="@dimen/dimens_16dp"
+        android:text="@string/goal"
+        />
+
     <EditText
         android:id="@+id/value"
         style="@style/Input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/goal_text"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintEnd_toStartOf="@id/units"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_weight="30"
         android:layout_marginBottom="@dimen/dimens_16dp"
-        android:hint="@string/value"
+        android:hint="@string/goal"
         />
 
     <Spinner
         android:id="@+id/units"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toEndOf="@id/value"
-        app:layout_constraintEnd_toStartOf="@id/input_type"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/result_type"
+        app:layout_constraintTop_toTopOf="@id/value"
+        app:layout_constraintBottom_toBottomOf="@id/value"
         app:layout_constraintHorizontal_weight="30"
         android:entries="@array/exercise_elements_units"
         />
 
-    <Spinner
-        android:id="@+id/input_type"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/title"
+    <ImageView
+        android:id="@+id/result_type"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:src="@drawable/equalsign"
+        android:layout_marginEnd="@dimen/dimens_16dp"
         app:layout_constraintStart_toEndOf="@id/units"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_weight="40"
-        android:entries="@array/exercise_elements_input_type"
+        app:layout_constraintTop_toTopOf="@id/value"
+        app:layout_constraintBottom_toBottomOf="@id/value"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

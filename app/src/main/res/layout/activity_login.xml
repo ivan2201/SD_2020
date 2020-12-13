@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:text="@string/remember"
         android:textAlignment="textEnd"
-        android:textColor="#37554D"
+        android:textColor="@color/dark_main_color"
         android:textSize="@dimen/text_size_18"
         app:layout_constraintBottom_toBottomOf="@id/remember_checkbox"
         app:layout_constraintLeft_toRightOf="@id/remember_checkbox"

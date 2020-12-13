@@ -2,6 +2,7 @@ package training.journal.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -22,6 +23,7 @@ import training.journal.R
 import training.journal.db.entity.ExerciseEntity
 import training.journal.db.entity.ExerciseParameterEntity
 import training.journal.db.entity.ExerciseTypeEntity
+import training.journal.db.entity.MeasureUnitEntity
 import training.journal.db.entity.ParameterEntity
 import training.journal.db.model.ParameterModel
 import training.journal.items.ItemsList
@@ -40,29 +42,34 @@ class ExerciseFragment : BaseFragment() {
     private var removeParameterButton: ImageView? = null
     private var exercise: ExerciseEntity? = null
     private var workoutId: Long? = null
+    private var exerciseId: Long? = null
     private var listAdapter: ParameterListAdapter? = null
+    private var elements: ItemsList<ParameterModel>? = null
+    private var measureUnitChoices: MutableList<MeasureUnitEntity>? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = elements_list
-        addParameterButton = add_parameter_button
         removeParameterButton = delete_parameter_button
         exerciseNameEditText = exercise_name
         exerciseTypeSpinner = exercise_type_spinner
 
-        GlobalScope.launch(Dispatchers.IO) {
-            workoutId = (activity?.intent?.extras?.get(WORKOUT_ID_KEY)) as Long
-            val exerciseId = (activity?.intent?.extras?.get(EXERCISE_ID_KEY)) as Long
-            exercise = database?.exerciseDao()?.getById(exerciseId)
+        addParameterButton = add_parameter_button
+        addParameterButton?.let { registerForContextMenu(it) }
 
-            val parametersList = database?.exerciseParameterDao()?.getParametersForExercise(exerciseId)!!
-            val measureUnitChoices = database?.measureUnitDao()?.getAll()?.toMutableList()!!
-            val parameterTypeChoices = database?.parameterTypeDao()?.getAll()?.toMutableList()!!
+        GlobalScope.launch(Dispatchers.IO) {
+            activity?.let {
+                workoutId = (it.intent.extras?.get(WORKOUT_ID_KEY)) as Long
+                exerciseId = (it.intent.extras?.get(EXERCISE_ID_KEY)) as Long
+            }
+            exercise = database?.exerciseDao()?.getById(exerciseId!!)
+            val parametersList = database?.exerciseParameterDao()?.getParametersForExercise(exerciseId!!)!!
+            measureUnitChoices = database?.measureUnitDao()?.getAll()?.toMutableList()!!
             val exerciseTypeChoices = database?.exerciseTypeDao()?.getAll()?.toMutableList()!!
 
             val parameterModelList = parametersList.map {
-                ParameterModel(it, measureUnitChoices, parameterTypeChoices)
+                ParameterModel(it, measureUnitChoices!!)
             }.toMutableList()
 
             withContext(Dispatchers.Main) {
@@ -74,44 +81,75 @@ class ExerciseFragment : BaseFragment() {
 
                 exerciseNameEditText?.setText(exercise?.name)
 
-                val elements = ItemsList(parameterModelList)
+                elements = ItemsList(parameterModelList)
 
                 listAdapter = ParameterListAdapter(
                     holderType = ExerciseElementViewHolder::class,
                     layoutId = R.layout.item_exercise_element,
-                    dataSource = elements,
+                    dataSource = elements!!,
                     onDeleteParameterClick = {
                         GlobalScope.launch(Dispatchers.IO) {
-                            database?.parameterDao()?.delete(it.parameter)
+                            database?.exerciseParameterDao()?.delete(exerciseId!!, it.parameter.id)
                             withContext(Dispatchers.Main) {
-                                elements.remove(it)
+                                elements!!.remove(it)
                             }
                         }
                     }
                 )
-
                 recyclerView?.adapter = listAdapter
                 recyclerView?.layoutManager = LinearLayoutManager(activity)
 
                 addParameterButton?.setOnClickListener {
-                    GlobalScope.launch(Dispatchers.IO) {
-                        val parameterEntity = ParameterEntity("", 1, 1)
-                        parameterEntity.id = database?.parameterDao()?.insert(parameterEntity)!!
-                        database?.exerciseParameterDao()?.insert(ExerciseParameterEntity(
-                            exerciseId,
-                            parameterEntity.id
-                        ))
-                        withContext(Dispatchers.Main) {
-                            elements.add(
-                                ParameterModel(parameterEntity, measureUnitChoices, parameterTypeChoices)
-                            )
-                        }
-                    }
+                    it.showContextMenu()
                 }
             }
         }
 
         setHasOptionsMenu(true)
+    }
+
+    private fun createNewParameter(parameter: ParameterEntity? = null) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val parameterEntity = parameter?.copy() ?: ParameterEntity("", 1)
+            parameterEntity.id = 0
+            parameterEntity.id = database?.parameterDao()?.insert(parameterEntity)!!
+            database?.exerciseParameterDao()?.insert(ExerciseParameterEntity(
+                exerciseId!!,
+                parameterEntity.id
+            ))
+            withContext(Dispatchers.Main) {
+                elements?.add(
+                    ParameterModel(parameterEntity, measureUnitChoices!!)
+                )
+            }
+        }
+    }
+
+    private fun addParameter(parameter: ParameterEntity) {
+        createNewParameter(parameter)
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        if (v.id == add_parameter_button.id) {
+            menu.add(0, 0, 0, v.resources.getString(R.string.create_new)).setOnMenuItemClickListener {
+                createNewParameter()
+                true
+            }
+            GlobalScope.launch(Dispatchers.IO) {
+                database?.let {
+                    val parameters = it.parameterDao().getAll().distinctBy { param -> param.name }
+                    withContext(Dispatchers.Main) {
+                        for (parameter in parameters) {
+                            menu.add(1, parameter.id.toInt(), 0, parameter.name).setOnMenuItemClickListener {
+                                addParameter(parameter)
+                                true
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

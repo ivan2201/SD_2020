@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TextViewExercise"
+        android:layout_margin="@dimen/dimens_16dp"
+        android:textSize="@dimen/text_size_25"
+        android:text="@string/results"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text_view"
+        />
+
+    <TextView
+        android:id="@+id/text_view"
+        android:text="@string/choose_the_exercise"
+        android:layout_marginTop="@dimen/dimens_16dp"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        style="@style/TextViewExercise"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/exercise_button"
+        app:layout_constraintBottom_toTopOf="@id/elements_list"
+        android:gravity="center"
+        android:paddingEnd="@dimen/dimens_16dp"
+        android:paddingStart="@dimen/dimens_16dp"
+        app:layout_constraintHorizontal_weight="50"
+        />
+    <Button
+        android:id="@+id/exercise_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimens_16dp"
+        app:layout_constraintTop_toTopOf="@id/text_view"
+        app:layout_constraintBottom_toBottomOf="@id/text_view"
+        app:layout_constraintStart_toEndOf="@id/text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="50"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/elements_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dimens_16dp"
+        app:layout_constraintTop_toBottomOf="@id/exercise_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_weight="60"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

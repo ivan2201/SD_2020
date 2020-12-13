@@ -15,8 +15,8 @@ interface ExerciseParameterDao {
     fun getAll(): List<ExerciseParameterEntity>
 
     @Query("SELECT * FROM ParameterEntity AS pe " +
-        "INNER JOIN ExerciseParameterEntity AS epe ON pe.id = epe.parameterId " +
-        "WHERE epe.exerciseId = :exerciseId")
+            "INNER JOIN ExerciseParameterEntity AS epe ON pe.id = epe.parameterId " +
+            "WHERE epe.exerciseId = :exerciseId")
     fun getParametersForExercise(exerciseId: Long): List<ParameterEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -33,4 +33,7 @@ interface ExerciseParameterDao {
 
     @Delete
     fun delete(exerciseParameterEntity: ExerciseParameterEntity): Int
+
+    @Query("DELETE FROM ExerciseParameterEntity WHERE exerciseId=:exerciseId AND parameterId=:parameterId")
+    fun delete(exerciseId: Long, parameterId: Long): Int
 }

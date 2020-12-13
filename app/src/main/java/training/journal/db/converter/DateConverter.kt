@@ -1,7 +1,7 @@
 package training.journal.db.converter
 
 import androidx.room.TypeConverter
-import java.sql.Date
+import java.util.Date
 
 class DateConverter {
     @TypeConverter

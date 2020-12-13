@@ -29,6 +29,7 @@
     <string name="exercise_elements">Exercise elements</string>
     <string name="exercise">Exercise</string>
     <string name="parameter_name">Parameter name</string>
+    <string name="goal">Goal</string>
     <string name="value">Value</string>
     <string name="workout">Workout</string>
     <string name="settings">Settings</string>
@@ -112,6 +113,20 @@
     <string name="day7">Sa</string>
     <string name="exercises_list">Exercises list</string>
     <string name="ok" translatable="false">OK</string>
+    <string name="next_exercise">Next exercise</string>
+    <string name="workout_progress">Workout progress</string>
+    <string name="create_new">Create new</string>
+    <string name="default_workout_name">Workout %d</string>
+    <string name="drawer_item_results">Show results</string>
+    <string name="choose_the_exercise">Choose the exercise</string>
+    <string name="results">Results</string>
+    <string name="drawer_item_calendar">Workouts calendar</string>
+    <string name="_0_00" translatable="false">0.00</string>
+    <string name="result">Result</string>
+    <string name="parameter_progress">The goal was completed by %.1f%%</string>
+    <string name="greater_better">The more the better</string>
+    <string name="less_better">The less the better</string>
+    <string name="equals_better">The closer the better</string>
     <string name="find_server_error">error: web server not found</string>
 
     <string-array name="exercise_types">
@@ -141,4 +156,26 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="strength">Strength</string>
+    <string name="dexterity">Dexterity</string>
+    <string name="coordination">Coordination</string>
+    <string name="endurance">Endurance</string>
+    <string name="speed">Speed</string>
+    <string name="flexibility">Flexibility</string>
+    <string name="concentration">Concentration</string>
+    <string name="other_type">Other type</string>
+    <string name="mm">mm</string>
+    <string name="sm">cm</string>
+    <string name="m">m</string>
+    <string name="km">km</string>
+    <string name="ue">u</string>
+    <string name="sec">sec</string>
+    <string name="min">min</string>
+    <string name="h">h</string>
+    <string name="kg">kg</string>
+    <string name="time">Time</string>
+    <string name="distance">Distance</string>
+    <string name="weight">Weight</string>
+
+
 </resources>

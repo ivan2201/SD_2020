@@ -30,7 +30,7 @@
     <string name="exercise_elements">Элементы упражнения</string>
     <string name="exercise">Упражнение</string>
     <string name="parameter_name">Имя параметра</string>
-    <string name="value">Значение</string>
+    <string name="goal">Цель</string>
     <string name="workout">Тренировка</string>
     <string name="settings">Настройки</string>
     <string name="enter_workout_name">Введите название тренировки</string>
@@ -38,7 +38,7 @@
     <string name="account_settings">Настройки аакаунта</string>
     <string name="drawer_item_bookmarks">Закладки</string>
     <string name="drawer_item_favourites">Избранное</string>
-    <string name="drawer_item_search">Найти тренеровку</string>
+    <string name="drawer_item_search">Найти тренировку</string>
 
     <string name="image">Изображение</string>
     <string name="change_imnage">Изменить ваше илчное изображение</string>
@@ -97,6 +97,13 @@
     <string name="day6">Сб</string>
     <string name="day7">Вс</string>
     <string name="start_training_button_text">Начать тренировку</string>
+    <string name="next_exercise">Следующее упражнение</string>
+    <string name="workout_progress">Прогресс тренировки</string>
+    <string name="create_new">Создать</string>
+    <string name="default_workout_name">Тренировка %d</string>
+    <string name="drawer_item_results">Результаты</string>
+    <string name="choose_the_exercise">Выберите упражнение</string>
+    <string name="results">Результаты</string>
 
     <string-array name="exercise_types">
         <item>Силовое</item>
@@ -114,15 +121,35 @@
         <item>миля</item>
     </string-array>
 
-    <string-array name="exercise_elements_input_type">
-        <item>цель</item>
-        <item>результат</item>
-        <item>секундомер</item>
-        <item>таймер</item>
-    </string-array>
-
     <string-array name="sign_up_user_gender">
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string name="drawer_item_calendar">Календарь тренировок</string>
+    <string name="result">Результат</string>
+    <string name="parameter_progress">Цель выполнена на %.1f%%</string>
+    <string name="greater_better">Чем больше, тем лучше</string>
+    <string name="less_better">Чем меньше, тем лучше</string>
+    <string name="equals_better">Чем ближе, тем лучше</string>
+    <string name="strength">На силу</string>
+    <string name="dexterity">На ловкость</string>
+    <string name="coordination">На координацию</string>
+    <string name="endurance">На выносливость</string>
+    <string name="speed">На скорость</string>
+    <string name="flexibility">На гибкость</string>
+    <string name="concentration">На внимание</string>
+    <string name="other_type">Другое</string>
+
+    <string name="mm">мм</string>
+    <string name="sm">см</string>
+    <string name="m">м</string>
+    <string name="km">км</string>
+    <string name="ue">ед</string>
+    <string name="sec">сек</string>
+    <string name="min">мин</string>
+    <string name="h">ч</string>
+    <string name="kg">кг</string>
+    <string name="time">Время</string>
+    <string name="distance">Дистанция</string>
+    <string name="weight">Вес</string>
 </resources>

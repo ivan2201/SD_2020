@@ -21,6 +21,7 @@
     <string name="action_add">Добавить</string>
     <string name="add_to_bookmarks">Добавить в закладки</string>
     <string name="exercise_type">Тип упражнения</string>
+    <string name="find_server_error">ошибка: веб-сервер не найден</string>
 
     <string name="choose_exercise_type">Выберите тип упражнения</string>
     <string name="enter_exercise_name">Введите имя упражнения</string>

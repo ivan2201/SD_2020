@@ -1,6 +1,8 @@
 package training.journal.activities.auth
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import com.afollestad.materialdialogs.MaterialDialog
 
 import kotlinx.android.synthetic.main.activity_login.*
@@ -9,6 +11,7 @@ import training.journal.R
 import training.journal.activities.BaseActivity
 import training.journal.api.Api
 import training.journal.api.ApiUtils
+import training.journal.api.CheckHostAsyncTask
 import training.journal.dto.UserDto
 import training.journal.repository.AuthRepository
 import training.journal.repository.CurrentUserRepository
@@ -16,6 +19,16 @@ import training.journal.utils.logger.Logger
 import java.net.HttpURLConnection
 
 class LoginActivity : BaseActivity() {
+
+    class LoginCheckHost(private val context: Context): CheckHostAsyncTask() {
+        override fun onPostExecute(result: String)
+        {
+            if (result.equals("error")) {
+                Toast.makeText(context, R.string.find_server_error, Toast.LENGTH_LONG).show()
+            }
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +49,7 @@ class LoginActivity : BaseActivity() {
                     )
             )
         }
+        LoginCheckHost(applicationContext).execute()
     }
 
     private fun onResponse(response: Response<UserDto>, token: String) {

@@ -10,7 +10,11 @@ import training.journal.BuildConfig
 object RetrofitApiUtils {
 
     // todo server url
-    private const val TRAINING_JOURNAL_URL = "http://178.79.189.130:8080"
+    var TRAINING_JOURNAL_URL = "http://devdomain.chickenkiller.com"
+        get() = field
+        set(value) {
+            field = value
+        }
 
     @JvmStatic
     fun createApi(): ApiInterface {

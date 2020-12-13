@@ -112,6 +112,7 @@
     <string name="day7">Sa</string>
     <string name="exercises_list">Exercises list</string>
     <string name="ok" translatable="false">OK</string>
+    <string name="find_server_error">error: web server not found</string>
 
     <string-array name="exercise_types">
         <item>Strength</item>

@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.facebook.fresco:fresco:2.3.0'
+    implementation 'com.afollestad.material-dialogs:input:3.3.0'
     def room_version = "2.2.5"
     def preference_version = "1.1.1"
     def materialDrawerRelease = "8.0.1"
